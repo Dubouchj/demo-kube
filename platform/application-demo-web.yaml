@@ -12,9 +12,8 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: demo-web
+  # Sync manuel (démo) : après un push, l'app passe OutOfSync et
+  # attend un clic sur SYNC dans l'interface Argo CD.
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
