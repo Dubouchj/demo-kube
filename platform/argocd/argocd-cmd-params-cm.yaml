@@ -1,0 +1,9 @@
+# TLS est terminé par NGINX Ingress (certificat Let's Encrypt).
+# argocd-server sert donc en HTTP à l'intérieur du cluster pour éviter
+# la double terminaison TLS et les boucles de redirection HTTP->HTTPS.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+data:
+  server.insecure: "true"

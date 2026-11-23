@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-web-html
+data:
+  index.html: |
+    <!doctype html>
+    <html lang="fr">
+      <head><meta charset="utf-8"><title>Démo GitOps Hikube</title></head>
+      <body style="font-family: sans-serif; text-align: center; margin-top: 15vh">
+        <h1>Démo GitOps sur Hikube</h1>
+        <p>Version 1 : déployée par Argo CD depuis GitHub.</p>
+      </body>
+    </html>
