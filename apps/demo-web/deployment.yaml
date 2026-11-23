@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: demo-web
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: demo-web
@@ -18,7 +18,7 @@ spec:
           env:
             # Changer ces valeurs et pousser sur main : Argo CD relance les pods.
             - name: BG_COLOR
-              value: "#1e6fd9"
+              value: "#dadada"
             - name: APP_VERSION
               value: "v1"
           ports:
