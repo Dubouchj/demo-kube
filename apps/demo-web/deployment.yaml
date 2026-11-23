@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: php
-          image: php:8.4-apache
+          image: php:8.2-apache
           env:
             # Changer ces valeurs et pousser sur main : Argo CD relance les pods.
             - name: BG_COLOR
