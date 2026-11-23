@@ -13,21 +13,32 @@ spec:
         app: demo-web
     spec:
       containers:
-        - name: nginx
-          image: nginxinc/nginx-unprivileged:1.27-alpine
+        - name: php
+          image: php:8.4-apache
+          env:
+            # Changer ces valeurs et pousser sur main : Argo CD relance les pods.
+            - name: BG_COLOR
+              value: "#1e6fd9"
+            - name: APP_VERSION
+              value: "v1"
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
           resources:
             requests:
-              cpu: 10m
-              memory: 32Mi
-            limits:
+              cpu: 20m
               memory: 64Mi
+            limits:
+              memory: 128Mi
           volumeMounts:
-            - name: html
-              mountPath: /usr/share/nginx/html
+            - name: app
+              mountPath: /var/www/html/index.php
+              subPath: index.php
       volumes:
-        - name: html
+        - name: app
           configMap:
-            name: demo-web-html
+            name: demo-web-php
